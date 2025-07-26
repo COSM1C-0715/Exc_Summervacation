@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Playermove : MonoBehaviour
 {
+    [SerializeField]
+    private Transform _axis;
     [SerializeField, Header("‰ñ“]—Ê")]
     private float RotateScale;
     [SerializeField,Header("ˆÚ“®—Ê")]
@@ -12,16 +14,16 @@ public class Playermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var rad = 0.0f;
+        var q = Quaternion.identity;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rad = RotateScale;
+            q = Quaternion.AngleAxis(RotateScale,_axis.up);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            rad = -RotateScale;
+            q = Quaternion.AngleAxis(-RotateScale, _axis.up);
         }
-        var R_Matrix = Matrix4x4.Rotate(Quaternion.Euler(0,rad,0));
+        transform.rotation = q * transform.rotation;
 
         var vec = new Vector3();
         if (Input.GetKey(KeyCode.W))
@@ -35,10 +37,9 @@ public class Playermove : MonoBehaviour
 
         var T_Matrix = Matrix4x4.Translate(vec);
 
-        P_Matrix = P_Matrix * (T_Matrix * R_Matrix);
+        P_Matrix = P_Matrix * T_Matrix;
 
         transform.position = P_Matrix.GetColumn(3);
-        transform.rotation = P_Matrix.rotation;
         transform.localScale = P_Matrix.lossyScale;
     }
 }
