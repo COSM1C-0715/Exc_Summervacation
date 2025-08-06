@@ -4,14 +4,20 @@ public class Playermove : MonoBehaviour
 {
     [SerializeField]
     private Transform _axis;
+    [SerializeField, Header("Ž‹–ìŠp")]
+    private float ViewAngle;
     [SerializeField, Header("‰ñ“]—Ê")]
     private float RotateScale;
     [SerializeField,Header("ˆÚ“®—Ê")]
     private float MoveScale;
-    [SerializeField,Header("’†g‚ªŒ©‚½‚¢‚¾‚¯")]
+    public float ViewRadian { get => ViewAngle * Mathf.Deg2Rad; }
+    [SerializeField, Header("’†g‚ªŒ©‚½‚¢‚¾‚¯")]
     private Matrix4x4 P_Matrix = Matrix4x4.identity;
+
+    public Matrix4x4 worldMatrix { get => P_Matrix; }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // Update is called once per frame
+    
     void Update()
     {
         var q = Quaternion.identity;
@@ -22,6 +28,14 @@ public class Playermove : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             q = Quaternion.AngleAxis(-RotateScale, _axis.up);
+        }
+        else if (Input.GetKey(KeyCode.UpArrow))
+        {
+            q = Quaternion.AngleAxis(-RotateScale, _axis.right);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            q = Quaternion.AngleAxis(RotateScale, _axis.right);
         }
         transform.rotation = q * transform.rotation;
 
