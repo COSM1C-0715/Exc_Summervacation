@@ -21,11 +21,11 @@ public class Playermove : MonoBehaviour
     void Update()
     {
         var q = Quaternion.identity;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             q = Quaternion.AngleAxis(RotateScale,_axis.up);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             q = Quaternion.AngleAxis(-RotateScale, _axis.up);
         }

@@ -27,7 +27,7 @@ public class EnemiesControll : MonoBehaviour
         var P_ViewCos = Mathf.Cos(Player.ViewRadian);
         for(int i= 0;i < Enemies.Length;i++)
         {
-            var PtoE = (Enemies[i].transform.position - Player.transform.position).normalized;
+            var PtoE = (Enemies[i].transform.position - Player.transform.position ).normalized;
 
             var Dot = Vector3.Dot(PlayerForward,PtoE);
 

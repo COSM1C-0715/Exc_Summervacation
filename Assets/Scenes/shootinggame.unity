@@ -770,7 +770,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1654,30 +1654,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 276987939}
   Enemies:
-  - {fileID: 1780734111}
-  - {fileID: 821511469}
-  - {fileID: 122997645}
-  - {fileID: 1191431238}
-  - {fileID: 1147395513}
-  - {fileID: 591563456}
-  - {fileID: 1888882723}
-  - {fileID: 1048031881}
-  - {fileID: 921314708}
-  - {fileID: 387486706}
-  - {fileID: 167312110}
-  - {fileID: 834090068}
-  - {fileID: 1189930994}
-  - {fileID: 1670364725}
-  - {fileID: 1229858611}
-  - {fileID: 1938855820}
-  - {fileID: 1553935157}
-  - {fileID: 11885524}
-  - {fileID: 502592007}
-  - {fileID: 1616510781}
-  - {fileID: 1342279409}
-  - {fileID: 1546137243}
-  - {fileID: 56611296}
-  - {fileID: 121039839}
+  - {fileID: 1780734115}
+  - {fileID: 821511473}
+  - {fileID: 122997649}
+  - {fileID: 1191431242}
+  - {fileID: 1147395517}
+  - {fileID: 591563460}
+  - {fileID: 1888882727}
+  - {fileID: 1048031885}
+  - {fileID: 921314712}
+  - {fileID: 387486710}
+  - {fileID: 167312114}
+  - {fileID: 834090072}
+  - {fileID: 1189930998}
+  - {fileID: 1670364729}
+  - {fileID: 1229858615}
+  - {fileID: 1938855824}
+  - {fileID: 1553935161}
+  - {fileID: 11885528}
+  - {fileID: 502592011}
+  - {fileID: 1616510785}
+  - {fileID: 1342279413}
+  - {fileID: 1546137247}
+  - {fileID: 56611300}
+  - {fileID: 121039843}
 --- !u!1 &1048031881
 GameObject:
   m_ObjectHideFlags: 0
