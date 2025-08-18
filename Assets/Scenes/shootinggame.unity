@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _axis: {fileID: 276987940}
-  ViewAngle: 0
+  ViewAngle: 90
   RotateScale: 0.8
   MoveScale: 0.1
   P_Matrix:

@@ -44,7 +44,7 @@ public class EnemiesControll : MonoBehaviour
                 Targets[i] = null;
             }
         }
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKey(KeyCode.Z))
         {
             UpdateTarget();
         }
@@ -52,8 +52,8 @@ public class EnemiesControll : MonoBehaviour
 
     public void UpdateTarget()
     {
-        Targets[Targetindex]?.SetTarget(false);
-        for(int index = ((Targetindex + 1)% Targets.Length);index != Targetindex; index = ((index + 1) % Targets.Length))
+        //Targets[Targetindex]?.SetTarget(false);
+        for (int index = ((Targetindex + 1) % Targets.Length); index != Targetindex; index = ((index + 1) % Targets.Length))
         {
             if (Targets[index])
             {

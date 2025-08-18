@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Playermove : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField,Header("軸にするオブジェクト")]
     private Transform _axis;
     [SerializeField, Header("視野角")]
     private float ViewAngle;
@@ -20,6 +20,8 @@ public class Playermove : MonoBehaviour
     
     void Update()
     {
+        P_Matrix = _axis.localToWorldMatrix;
+
         var q = Quaternion.identity;
         if (Input.GetKey(KeyCode.RightArrow))
         {
