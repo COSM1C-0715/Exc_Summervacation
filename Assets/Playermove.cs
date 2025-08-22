@@ -14,7 +14,7 @@ public class Playermove : MonoBehaviour
     [SerializeField, Header("’†g‚ªŒ©‚½‚¢‚¾‚¯")]
     private Matrix4x4 P_Matrix = Matrix4x4.identity;
 
-    public Matrix4x4 worldMatrix { get => P_Matrix; }
+    public Matrix4x4 worldMatrix { get => P_Matrix = _axis.localToWorldMatrix; }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // Update is called once per frame
     
