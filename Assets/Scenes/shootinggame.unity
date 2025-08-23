@@ -546,31 +546,6 @@ MonoBehaviour:
   spawnDis: 30
   P_pos: {fileID: 276987940}
   Player: {fileID: 276987939}
-  Enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1185811242
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +679,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4641574499877099276, guid: 6f112ebeee82b2e4cad35648f15a1d82, type: 3}
   bulletCount: 8
   bulletSpeed: 10
-  radius: 2
+  radius: 5
   forwardOffset: 2
 --- !u!1 &1283899728
 GameObject:
