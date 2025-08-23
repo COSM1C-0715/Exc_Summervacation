@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletControll : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class BulletControll : MonoBehaviour
     [SerializeField]
     private float bulletSpeed;
     [SerializeField]
-    private int radius;
+    private float radius;
     [SerializeField]
     private float forwardOffset;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,7 +40,7 @@ public class BulletControll : MonoBehaviour
 
             Vector3 localPos = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * radius;
 
-            Vector3 worldPos = forwardCenter + localPos;
+            Vector3 worldPos = forwardCenter + transform.rotation * localPos;
 
             GameObject bullet = Instantiate(bulletPrefab,worldPos,Quaternion.identity);
 

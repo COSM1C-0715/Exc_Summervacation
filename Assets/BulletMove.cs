@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
@@ -16,5 +16,6 @@ public class BulletMove : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
+        Destroy(this.gameObject, 5f);
     }
 }

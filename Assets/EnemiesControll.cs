@@ -1,6 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class EnemiesControll : MonoBehaviour
 {
@@ -12,17 +13,13 @@ public class EnemiesControll : MonoBehaviour
     private float spawnRadius;
     [SerializeField]
     private float spawnDis;
-    private const int Enemynum = 24;
-
     [SerializeField]
     private Transform P_pos;
-    public int Targetindex { get; set; } = 0;
+    
     [SerializeField]
     private Playermove Player;
-    [SerializeField, Header("“Gˆê——")]
-    private enemy_[] Enemies = new enemy_[Enemynum];
-
-    private enemy_[] Targets = new enemy_[Enemynum];
+    private List<Transform> Enemies = new List<Transform>();
+    private List<Transform> currentTargets = new List<Transform>();
     //Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,45 +38,49 @@ public class EnemiesControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateTargets();
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            LockOnTargets();
+        }
+    }
+
+    void UpdateTargets()
+    {
+        currentTargets.Clear();
         var NomalZ = new Vector3(0, 0, 1);
         var PlayerForward = Player.worldMatrix * NomalZ;
         var P_ViewCos = Mathf.Cos(Player.ViewRadian);
-        //for (int i = 0; i < Targets.Length; i++)
-        //{
-        //    var PtoE = (Enemies[i].transform.position - Player.transform.position).normalized;
+        var candidates = new List<(Transform enemy, float dot)>();
+        foreach(var enemy in Enemies)
+        {
+            Vector3 dir = (enemy.position - P_pos.position).normalized;
+            float dot = Vector3.Dot(PlayerForward, dir);
 
-        //    var Dot = Vector3.Dot(PlayerForward, PtoE);
+            if(dot >= P_ViewCos)
+            {
+                candidates.Add((enemy, dot));
+            }
+        }
 
-        //    if (P_ViewCos > Dot && Dot > 0)
-        //    {
-        //        Targets[i] = Enemies[i];
-        //    }
-        //    else
-        //    {
-        //        if (Targetindex == i)
-        //        {
-        //            Targets[Targetindex]?.SetTarget(false);
-        //        }
-        //        Targets[i] = null;
-        //    }
-        //}
-        //if (Input.GetKey(KeyCode.Z))
-        //{
-        //    UpdateTarget();
-        //}
+        candidates.Sort((a, b) => b.dot.CompareTo(a.dot));
+
+        foreach(var c in candidates.Take(8))
+        {
+            currentTargets.Add(c.enemy);
+        }
     }
 
-    public void UpdateTarget()
+    void LockOnTargets()
     {
-        Targets[Targetindex]?.SetTarget(false);
-        for (int index = ((Targetindex + 1) % 8); index != Targetindex; index = ((index + 1) % 8))
+        foreach(var target in currentTargets)
         {
-            if (Targets[index])
+            var enemyScript = target.GetComponent<enemy_>();
+            if(enemyScript!=null)
             {
-                Targetindex = index;
-                break;
+                enemyScript.SetTarget(true);
             }
-            Targets[Targetindex]?.SetTarget(true);
         }
     }
 }
